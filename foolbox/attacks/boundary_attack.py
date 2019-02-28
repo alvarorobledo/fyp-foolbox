@@ -453,8 +453,8 @@ class BoundaryAttack(Attack):
                     candidate, spherical_candidate \
                         = futures[j].result()
                     if do_spherical:
-                        spherical_candidates[j] = spherical_candidate
-                    candidates[j] = candidate
+                        spherical_candidates[j] = np.round(spherical_candidate) #round up pixel values to nearest integer
+                    candidates[j] = np.round(candidate) #round up pixel values to nearest integer
                     t = time.time() - t
                     self.stats_generator_duration[
                         current_batch_size - 1] += t
