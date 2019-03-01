@@ -60,6 +60,7 @@ class KerasModel(DifferentiableModel):
         assert num_classes is not None
 
         self._num_classes = num_classes
+        self._num_api_calls = 0
 
         if predicts == 'probabilities':
             if K.backend() == 'tensorflow':
@@ -150,6 +151,7 @@ class KerasModel(DifferentiableModel):
         assert len(predictions) == 1
         predictions = predictions[0]
         assert predictions.shape == (images.shape[0], self.num_classes())
+        self._num_api_calls += 1
         return predictions
 
     def predictions_and_gradient(self, image, label):
