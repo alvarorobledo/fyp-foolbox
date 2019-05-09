@@ -775,7 +775,7 @@ class BoundaryAttack(Attack):
         assert spherical_candidate.dtype == internal_dtype
         assert candidate.dtype == internal_dtype
 
-        data = (candidate, spherical_candidate)
+        data = (np.round(candidate), np.round(spherical_candidate))
 
         return data
 
